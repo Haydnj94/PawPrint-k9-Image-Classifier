@@ -1,6 +1,6 @@
 # PawPrint-k9-Image-Classifier
 - Desktop - https://pawprintk9.streamlit.app/
-- mobile - https://pawprintk9-mobile.streamlit.app/
+- Mobile - https://pawprintk9-mobile.streamlit.app/
 
 This repository contains a deep learning model built using Convolutional Neural Networks (CNN) to classify images of dog breeds from the Stanford Dogs Dataset. The model uses the pre-trained MobileNet model for feature extraction and fine-tuning, with custom preprocessing and data augmentation to optimize performance.
 
