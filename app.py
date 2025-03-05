@@ -43,12 +43,6 @@ st.write("Upload an image of a dog, and I'll predict its breed!")
 
 uploaded_file = st.file_uploader("", type=["jpg", "png", "jpeg"])
 
-# Streamlit UI
-st.title("🐶 Dog Breed Classifier")
-st.write("Upload an image of a dog, and I'll predict its breed!")
-
-uploaded_file = st.file_uploader("Upload a dog image", type=["jpg", "png", "jpeg"])
-
 if uploaded_file is not None:
     # Display uploaded image
     img = Image.open(uploaded_file)
@@ -57,18 +51,9 @@ if uploaded_file is not None:
     # Preprocess and predict
     img_array = preprocess_image(img)
     predictions = model.predict(img_array)
-    
-    # Get top 3 predictions (indices of the highest values)
-    top_3_indices = np.argsort(predictions[0])[-3:][::-1]  # Sorting the predictions in descending order
-    top_3_classes = [class_labels[idx] for idx in top_3_indices]  # Get class labels
-    top_3_confidence = [predictions[0][idx] for idx in top_3_indices]  # Get corresponding confidence scores
-    
-    # Show top predictions
-    st.subheader(f"Prediction 1: {top_3_classes[0]}")
-    st.write(f"Confidence: {top_3_confidence[0]*100:.2f}%")
-    
-    st.subheader(f"Prediction 2: {top_3_classes[1]}")
-    st.write(f"Confidence: {top_3_confidence[1]*100:.2f}%")
-    
-    st.subheader(f"Prediction 3: {top_3_classes[2]}")
-    st.write(f"Confidence: {top_3_confidence[2]*100:.2f}%")
+    predicted_class = class_labels[np.argmax(predictions)]
+    confidence = np.max(predictions) * 100
+
+    # Show result
+    st.subheader(f"Prediction: {predicted_class}")
+    st.write(f"Confidence: {confidence:.2f}%")
