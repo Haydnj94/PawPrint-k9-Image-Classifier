@@ -41,7 +41,7 @@ def preprocess_image(img):
 st.title("🐶 Dog Breed Classifier")
 st.write("Upload an image of a dog, and I'll predict its breed!")
 
-uploaded_file = st.file_uploader("images/n02091134-whippet/n02091134_842.jpg", type=["jpg", "png", "jpeg"])
+uploaded_file = st.file_uploader("", type=["jpg", "png", "jpeg"])
 
 if uploaded_file is not None:
     # Display uploaded image
