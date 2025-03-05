@@ -40,7 +40,7 @@ To enhance the model's ability to generalize and deal with a small dataset, **im
 - **Final Epoch Results**:
     - **Training Accuracy**: 77.15%
     - **Validation Accuracy**: 80.17%
-    - **Test Accuracy**: 80.61%
+    - **Test Accuracy**: 79.5%
 
 Although these results were satisfactory, further optimization was attempted to improve accuracy.
 
