@@ -54,21 +54,13 @@ if camera_input is not None:
     img_array = preprocess_image(img)
     predictions = model.predict(img_array)
     
-    # Get the top 3 predictions
-    top_3_indices = np.argsort(predictions[0])[-3:][::-1]  # Get indices of top 3 predictions (sorted in descending order)
-    top_3_predictions = [(class_labels[idx], predictions[0][idx] * 100) for idx in top_3_indices]
-    
-    # Display the top 1 prediction
-    predicted_class, confidence = top_3_predictions[0]
-    
+    # Get the most likely prediction
+    predicted_class = class_labels[np.argmax(predictions)]
+    confidence = np.max(predictions) * 100
+
     # Show result
     st.subheader(f"Prediction: {predicted_class}")
     st.write(f"Confidence: {confidence:.2f}%")
-
-    # Display the second and third most likely predictions
-    st.subheader("Other likely breeds:")
-    for breed, conf in top_3_predictions[1:]:
-        st.write(f"{breed}: {conf:.2f}%")
 
 # Allow uploading image (fallback option)
 uploaded_file = st.file_uploader("Or upload an image", type=["jpg", "png", "jpeg"])
@@ -82,18 +74,10 @@ if uploaded_file is not None:
     img_array = preprocess_image(img)
     predictions = model.predict(img_array)
     
-    # Get the top 3 predictions
-    top_3_indices = np.argsort(predictions[0])[-3:][::-1]  # Get indices of top 3 predictions (sorted in descending order)
-    top_3_predictions = [(class_labels[idx], predictions[0][idx] * 100) for idx in top_3_indices]
-    
-    # Display the top 1 prediction
-    predicted_class, confidence = top_3_predictions[0]
-    
+    # Get the most likely prediction
+    predicted_class = class_labels[np.argmax(predictions)]
+    confidence = np.max(predictions) * 100
+
     # Show result
     st.subheader(f"Prediction: {predicted_class}")
     st.write(f"Confidence: {confidence:.2f}%")
-
-    # Display the second and third most likely predictions
-    st.subheader("Other likely breeds:")
-    for breed, conf in top_3_predictions[1:]:
-        st.write(f"{breed}: {conf:.2f}%")
