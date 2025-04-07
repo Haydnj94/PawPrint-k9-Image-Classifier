@@ -99,3 +99,7 @@ The project demonstrates a successful implementation of a CNN-based image classi
 - Matplotlib
 - OpenCV
 - Streamlit
+
+**Personal Study Only - No Distribution Intended**
+
+This notebook contains code and a model developed for my personal study of dog breed classification using the Stanford Dogs Dataset. It is not intended for public use, distribution, or commercial purposes.
